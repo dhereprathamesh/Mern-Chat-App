@@ -33,13 +33,16 @@ const GroupChatModal = ({ children }) => {
 
   const handleGroup = (userToAdd) => {
     if (selectedUsers.includes(userToAdd)) {
-      toast({
-        title: "User already added",
-        status: "warning",
-        duration: 5000,
-        isClosable: true,
-        position: "top",
-      });
+    setTimeout(() => {
+  toast({
+    title: "User already added",
+    status: "warning",
+    duration: 5000,
+    isClosable: true,
+    position: "top",
+  });
+}, 2000); 
+
       return;
     }
 
