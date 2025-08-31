@@ -40,18 +40,30 @@ const registerUser = asyncHandler(async (req, res) => {
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
+  // Check if email and password are provided
+  if (!email || !password) {
+    return res.status(400).json({ message: "Please provide email and password" });
+  }
+
+  
   const user = await User.findOne({ email });
 
+
   if (user && (await user.matchPassword(password))) {
-    res.json({
+    return res.status(200).json({
       _id: user._id,
       name: user.name,
       email: user.email,
       pic: user.pic,
       token: generateToken(user._id),
     });
+  } else {
+    
+    return res.status(401).json({ message: "Invalid email or password" });
   }
 });
+
+
 
 const allUsers = asyncHandler(async (req, res) => {
   const keyword = req.query.search
@@ -67,7 +79,8 @@ const allUsers = asyncHandler(async (req, res) => {
 });
 
 const userAuth = (req, res) => {
-  // If the protect middleware has passed, we know the user is authenticated
+console.log(error);
+
   res.status(200).json({ ok: true });
 };
 
