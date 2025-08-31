@@ -59,7 +59,7 @@ const Login = () => {
     isClosable: true,
     position: "bottom",
   });
-}, 2000); // 2000ms = 2 seconds
+}, 2000);
 
  
       localStorage.setItem("userInfo", JSON.stringify(data));

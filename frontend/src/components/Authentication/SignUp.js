@@ -61,13 +61,16 @@ const SignUp = () => {
           setLoading(false);
         });
     } else {
-      toast({
-        title: "Please Select an Image",
-        status: "Warning",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom",
-      });
+     setTimeout(() => {
+  toast({
+    title: "Please Select an Image",
+    status: "warning",
+    duration: 5000,
+    isClosable: true,
+    position: "bottom",
+  });
+}, 2000); 
+
       setLoading(false);
       return;
     }
