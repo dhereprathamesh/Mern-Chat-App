@@ -51,15 +51,19 @@ const Login = () => {
         config
       );
 
-      toast({
-        title: "Login Successful",
-        status: "success",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom",
-      });
-      // setUser(data);
+     setTimeout(() => {
+  toast({
+    title: "Login Successful",
+    status: "success",
+    duration: 5000,
+    isClosable: true,
+    position: "bottom",
+  });
+}, 2000); // 2000ms = 2 seconds
+
+ 
       localStorage.setItem("userInfo", JSON.stringify(data));
+      
       setLoading(false);
       navigate("/chats");
     } catch (error) {
